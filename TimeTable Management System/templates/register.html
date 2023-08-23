@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <title>Flask Intro - login page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href='/static/form.css' />
+</head>
+
+<body>
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        
+        <form class="login" action="{{ url_for('register') }}" method="post">
+          <h1>Registration</h1>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input type="text" id="name" class="login__input" placeholder="name" name="name" name='name'>
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input type="email" id="email" class="login__input" placeholder="Email" name="email"
+              value="{{ request.form.name }}" name="email">
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input type="password" id="password" class="login__input" placeholder="Password" name="password"
+              value="{{ request.form.password }}" name='pswd'>
+          </div>
+          <button class="button login__submit" type="submit">
+            <span class="button__text">Submit</span>
+            <i class="button__icon fas fa-chevron-right"></i>
+          </button>
+        </form>
+        <p class="bottom" style="padding-left: 20px;">Already have an account? <a class="bottom" href="{{url_for('login')}}"> Login here</a></p>
+      </div>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
+    </div>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+  </div>
+</body>
+
+</html>
